@@ -1,7 +1,6 @@
 <?php
 
 use App\Dorcas\Support\Gravatar;
-use Illuminate\Validation\ValidationException;
 
 /**
  * Generates a URL using the provided base.
@@ -46,6 +45,20 @@ function cdn(string $path, bool $secure = true)
     $base = config('app.cdn_url', config('app.url'));
     # we get the base URL first
     return custom_url($base, $path, null, $secure);
+}
+
+/**
+ * Returns an absolute URL for the path, using the Dorcas domain as the base.
+ *
+ * @param string     $path
+ * @param array|null $parameters
+ * @param bool       $secure
+ *
+ * @return string
+ */
+function dorcas_url(string $path, array $parameters = null, bool $secure = true): string
+{
+    return custom_url('https://dorcas.ng', $path, $parameters, $secure);
 }
 
 /**
