@@ -1,6 +1,8 @@
 <?php
 
 use App\Dorcas\Support\Gravatar;
+use Hostville\Dorcas\DorcasResponse;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Generates a URL using the provided base.
@@ -134,4 +136,25 @@ function image_to_base64(string $url)
         return null;
     }
     return $encoded . base64_encode($rawContent);
+}
+
+/**
+ * Injects validation exceptions into the validator.
+ *
+ * @param DorcasResponse    $apiResponse
+ * @param Validator         $validator
+ *
+ * @return bool
+ * @throws \Illuminate\Validation\ValidationException
+ */
+function inject_validation_errors(DorcasResponse $apiResponse, Validator &$validator)
+{
+    $validationErrors = get_validation_errors_from_response($apiResponse);
+    if (empty($validationErrors)) {
+        return true;
+    }
+    foreach ($validationErrors as $field => $errors) {
+        $validator->errors()->add($field, $errors[0]);
+    }
+    throw new \Illuminate\Validation\ValidationException($validator);
 }
