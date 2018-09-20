@@ -4,15 +4,15 @@ This project is the starter template for building web apps on the Dorcas API usi
 
 ## Setup
 
-1. Clone the repository to your working directory `git clone https://gitlab.com/emmanix2002/dorcas-starter`    
-2. Rename it to whatever you want it to be.    
-3. `cd` into the cloned repository `cd /path/to/renamed-starter-project`    
-4. Rename the `.env.example` configuration file to`.env` 
-5. Set your database connection settings in the `.env` configuration file
-6. Set write permissions to the `storage`, and `bootstrap/cache` directories
-7. Install dependencies `composer install`
-8. Run default migrations `./artisan migrate` - to import the queue tables
-9. Add your Dorcas API client `id`, and `secret`
+1. Clone the repository to your working directory `git clone https://gitlab.com/emmanix2002/dorcas-starter folder-name`        
+2. `cd` into the cloned repository `cd /path/to/folder-name`    
+3. Duplicate/Rename the `.env.example` configuration file to `.env` : `cp .env.example .env`
+4. Set your database connection settings in the `.env` configuration file
+5. Set write permissions to the `storage`, and `bootstrap/cache` directories
+6. Install dependencies `composer install`
+7. Run default migrations `./artisan migrate` - to import the queue tables
+8. Add your Dorcas API client `id`, and `secret`
+9. Optionally, update the remote URL for your new repository: `git remote set-url origin https://github.com/username/new-repository-id`
 
 ## What's included 
 
